@@ -4,12 +4,14 @@ import edu.migsw.marca.entities.MarcaEntity;
 import edu.migsw.marca.services.MarcaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/marca")
+@CrossOrigin("http://localhost:3000")
 public class MarcaController {
     
     @Autowired
@@ -47,4 +49,17 @@ public class MarcaController {
         }
         return ResponseEntity.ok(marcas);
     }
+
+    @RequestMapping("/upload")
+    public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
+        try{
+            String fileName = file.getOriginalFilename();
+            marcaService.save(file);
+            marcaService.deleteAll();
+            marcaService.obtenerMarcas(fileName);
+            return ResponseEntity.ok().body("Archivo subido correctamente");
+        }catch(Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    } 
 }
