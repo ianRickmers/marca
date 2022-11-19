@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: marca-service
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8008
+  datasource:
+    url: jdbc:mysql://localhost:3306/bdmarcas
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update  

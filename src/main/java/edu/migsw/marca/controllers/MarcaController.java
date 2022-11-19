@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 @RestController
-@RequestMapping("/marca")
+@RequestMapping("/marcas")
 @CrossOrigin("http://localhost:3000")
 public class MarcaController {
     
