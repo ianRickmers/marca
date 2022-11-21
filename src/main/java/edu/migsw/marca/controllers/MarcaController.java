@@ -11,7 +11,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/marcas")
-@CrossOrigin("http://localhost:3000")
 public class MarcaController {
     
     @Autowired
