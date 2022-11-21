@@ -4,11 +4,15 @@ spring:
   cloud:
     config:
       enabled: true
+      fail-fast: true
+      retry:
+        maxAttempts: 200
+        maxInterval: 10000
       uri: http://localhost:8180
-  datasource:
-    url: jdbc:mysql://localhost:3306/bdmarcas
-    username: root
-    password: password
-  jpa:
-    hibernate:
-      ddl-auto: update  
+  # datasource:
+  #   url: jdbc:mysql://localhost:3306/bdmarcas
+  #   username: root
+  #   password: password
+  # jpa:
+  #   hibernate:
+  #     ddl-auto: update  
